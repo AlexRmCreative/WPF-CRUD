@@ -15,7 +15,7 @@ Clonar el Repositorio:
 
 bash
 Copy code
-git clone https://github.com/AlexRmCreative/CRUD-WPF.git
+git clone https://github.com/AlexRmCreative/WPF-CRUD.git
 Compilar y Ejecutar:
 
 Abre la solución en tu entorno de desarrollo.
