@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Colores primarios de Bootstrap -->
+    <SolidColorBrush x:Key="bg-primary" Color="#007BFF" />
+    <!-- Azul primario -->
+    <SolidColorBrush x:Key="text-primary" Color="#0d6efd" />
+    <!-- Texto azul primario -->
+
+    <!-- Colores secundarios de Bootstrap -->
+    <SolidColorBrush x:Key="bg-secondary" Color="#6C757D" />
+    <!-- Gris secundario -->
+    <SolidColorBrush x:Key="text-secondary" Color="#212529" />
+    <!-- Texto gris secundario -->
+
+    <!-- Colores para clases de Bootstrap -->
+    <SolidColorBrush x:Key="bg-card" Color="#F8F9FA" />
+    <!-- Color de fondo para las tarjetas (card) -->
+    <SolidColorBrush x:Key="text-card" Color="#212529" />
+    <!-- Color de texto para las tarjetas (card) -->
+
+    <SolidColorBrush x:Key="bg-danger" Color="#DC3545" />
+    <!-- Color de fondo para elementos con peligro (danger) -->
+    <SolidColorBrush x:Key="text-danger" Color="#FFFFFF" />
+    <!-- Color de texto para elementos con peligro (danger) -->
+
+    <SolidColorBrush x:Key="bg-info" Color="#17A2B8" />
+    <!-- Color de fondo para información (info) -->
+    <SolidColorBrush x:Key="text-info" Color="#FFFFFF" />
+    <!-- Color de texto para información (info) -->
+
+    <SolidColorBrush x:Key="bg-warning" Color="#FFC107" />
+    <!-- Color de fondo para advertencias (warning) -->
+    <SolidColorBrush x:Key="text-warning" Color="#212529" />
+    <!-- Color de texto para advertencias (warning) -->
+
+    <!-- Colores adicionales -->
+    <SolidColorBrush x:Key="bg-success" Color="#28A745" />
+    <!-- Color de fondo para operaciones exitosas (success) -->
+    <SolidColorBrush x:Key="text-success" Color="#FFFFFF" />
+    <!-- Color de texto para operaciones exitosas (success) -->
+
+    <SolidColorBrush x:Key="bg-light" Color="#F8F9FA" />
+    <!-- Color de fondo claro (light) -->
+    <SolidColorBrush x:Key="text-light" Color="#FFFFFF" />
+    <!-- Color de texto claro (light) -->
+
+    <SolidColorBrush x:Key="bg-dark" Color="#252525" />
+    <!-- Color de fondo oscuro (dark) -->
+    <SolidColorBrush x:Key="text-dark" Color="#252525" />
+    <!-- Color de texto oscuro (dark) -->
+
+    <SolidColorBrush x:Key="bg-grey" Color="#6C757D" />
+    <!-- Color de fondo gris (grey) -->
+    <SolidColorBrush x:Key="text-grey" Color="#FFFFFF" />
+    <!-- Color de texto gris (grey) -->
+
+    <!-- Otros colores de Bootstrap según sea necesario -->
+
+</ResourceDictionary>
