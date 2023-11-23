@@ -34,8 +34,49 @@ namespace CRUD.Views
 
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
         {
-            _userViewModel.AddUser();
+            if (HighlightInvalidTextBoxes(name_TBox) && HighlightInvalidTextBoxes(lastname_TBox) && IsValidEmail(email_TBox))
+            {
+                // Llama al método AddUser del UserViewModel con los valores obtenidos
+                _userViewModel.AddUser(name_TBox.Text, lastname_TBox.Text, email_TBox.Text);
+
+                // Limpiar estilos de los TextBox después de una validación exitosa
+                ClearTextBoxesStyles(new TextBox[] { name_TBox, lastname_TBox, email_TBox});
+            }
         }
+
+        private bool HighlightInvalidTextBoxes(TextBox textBox)
+        {
+            if(string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.BorderBrush = Brushes.Red;
+                return false;
+            }
+            else
+            {
+                textBox.ClearValue(BorderBrushProperty);
+                return true;
+            }
+        }
+
+        private void ClearTextBoxesStyles(TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.ClearValue(BorderBrushProperty);
+            }
+        }
+
+        private bool IsValidEmail(TextBox emailTBox)
+        {
+            if (!emailTBox.Text.Contains("@"))
+            {
+                emailTBox.BorderBrush = Brushes.Red;
+                return false;
+            }
+            return true;
+        }
+
+
 
         private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
         {
@@ -51,13 +92,27 @@ namespace CRUD.Views
             }
             else
             {
-                MessageBox.Show("Selecciona al menos un usuario antes de eliminar.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Selecciona al menos un usuario antes.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
         private void EditUserButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (users_dataGrid.SelectedItem != null)
+            {
+                User selectedUser = users_dataGrid.SelectedItem as User;
+                if (HighlightInvalidTextBoxes(name_TBox) && HighlightInvalidTextBoxes(lastname_TBox) && IsValidEmail(email_TBox))
+                {
+                    selectedUser.Name = name_TBox.Text;
+                    selectedUser.LastName = lastname_TBox.Text;
+                    selectedUser.Email = email_TBox.Text;
+                    ClearTextBoxesStyles(new TextBox[] { name_TBox, lastname_TBox, email_TBox });
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecciona al menos un usuario antes.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

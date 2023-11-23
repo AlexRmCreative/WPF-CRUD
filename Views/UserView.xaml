@@ -13,12 +13,20 @@
             <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
 
-        <!-- Botones en la columna izquierda -->
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="4*"></RowDefinition>
                     <RowDefinition Height="2*"></RowDefinition>
                 </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Margin="10 50 10 10">
+                <Label>Nombre</Label>
+                <TextBox Name="name_TBox"></TextBox>
+                <Label>Apellido</Label>
+                <TextBox Name="lastname_TBox"></TextBox>
+                <Label>Email</Label>
+                <TextBox Name="email_TBox"></TextBox>
+            </StackPanel>
                 
                 <StackPanel Grid.Row="1">
                     <Button Margin="10"  Content="Agregar Usuario" Click="AddUserButton_Click" />

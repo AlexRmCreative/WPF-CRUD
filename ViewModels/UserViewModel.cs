@@ -63,18 +63,19 @@ namespace CRUD.ViewModels
             File.WriteAllText(filePath, json);
         }
 
-        public void AddUser()
+        public void AddUser(string name, string lastname, string email)
         {
-            _users.Add(new User()
+            _users.Add(new User
             {
                 Id = GetNewId(),
-                Name = "Alejandro",
-                LastName = "Roa",
-                Email = "alejadro.roa.mateo@gmail.com",
-                Password = "Password",
+                Name = name,
+                LastName = lastname,
+                Email = email,
+                Password = "Password", // Puedes establecer una contraseña predeterminada o manejarla de alguna otra manera
             });
             SaveUsers(jsonFile);
         }
+
 
         public void DeleteUser(User userToRemove)
         {
