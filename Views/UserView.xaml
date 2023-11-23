@@ -7,16 +7,33 @@
              xmlns:vm="clr-namespace:CRUD.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
-        <vm:UserViewModel />
-    </UserControl.DataContext>
-    
     <Grid>
-        <DataGrid ItemsSource="{Binding Users}" AutoGenerateColumns="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Botones en la columna izquierda -->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <StackPanel Grid.Row="1">
+                    <Button Margin="10"  Content="Agregar Usuario" Click="AddUserButton_Click" />
+                    <Button Margin="10" Content="Eliminar Usuario" Click="DeleteUserButton_Click" />
+                    <Button Margin="10" Content="Editar Usuario" Click="EditUserButton_Click" />
+                </StackPanel>
+                
+            </Grid>
+
+        <!-- DataGrid en la columna derecha -->
+        <DataGrid IsReadOnly="True" Name="users_dataGrid" Grid.Column="1" ItemsSource="{Binding Users}" AutoGenerateColumns="False" Margin="0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="Apellido" Binding="{Binding LastName}" />
-                <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" Width="*" />
+                <DataGridTextColumn Header="Apellido" Binding="{Binding LastName}" Width="*" />
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

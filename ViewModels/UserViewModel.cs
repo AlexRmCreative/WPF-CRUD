@@ -3,23 +3,28 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
+using System.IO;
+using System.Windows;
 
 namespace CRUD.ViewModels
 {
     public class UserViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<User> _users;
-
         public UserViewModel()
         {
-            _users = new ObservableCollection<User>();
-            // Agrega algunos usuarios de ejemplo (puedes cargarlos desde tu lógica de datos aquí)
-            _users.Add(new User { Name = "John", LastName = "Doe", Email = "john@example.com" });
-            _users.Add(new User { Name = "Jane", LastName = "Doe", Email = "jane@example.com" });
+            _users = LoadUsers();
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private ObservableCollection<User> _users;
+
         public ObservableCollection<User> Users
         {
             get { return _users; }
@@ -33,11 +38,53 @@ namespace CRUD.ViewModels
             }
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        string jsonFile = "users.json";
 
-        protected virtual void OnPropertyChanged(string propertyName)
+        public ObservableCollection<User> LoadUsers()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (File.Exists(jsonFile))
+            {
+                string json = File.ReadAllText(jsonFile);
+                if (!string.IsNullOrEmpty(json))
+                {
+                    var result = JsonSerializer.Deserialize<ObservableCollection<User>>(json);
+                    if (result != null)
+                    {
+                        return result;
+                    }
+                }
+            }
+
+            return new ObservableCollection<User>();
+        }
+        private void SaveUsers(string filePath)
+        {
+            string json = JsonSerializer.Serialize(Users);
+            File.WriteAllText(filePath, json);
+        }
+
+        public void AddUser()
+        {
+            _users.Add(new User()
+            {
+                Id = GetNewId(),
+                Name = "Alejandro",
+                LastName = "Roa",
+                Email = "alejadro.roa.mateo@gmail.com",
+                Password = "Password",
+            });
+            SaveUsers(jsonFile);
+        }
+
+        public void DeleteUser(User userToRemove)
+        {
+            _users.Remove(userToRemove);
+            SaveUsers(jsonFile);
+        }
+
+        public uint GetNewId()
+        {
+            return _users.Count > 0 ? (uint)_users.Count : 0;
         }
     }
 }
