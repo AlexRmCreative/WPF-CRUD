@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRUD.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,11 @@ using System.Windows.Shapes;
 namespace CRUD.Views
 {
     /// <summary>
-    /// Lógica de interacción para RecordsView.xaml
+    /// Lógica de interacción para UserView.xaml
     /// </summary>
-    public partial class RecordsView : UserControl
+    public partial class UserView : UserControl
     {
-        public RecordsView()
+        public UserView()
         {
             InitializeComponent();
         }
